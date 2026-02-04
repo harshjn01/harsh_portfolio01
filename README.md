@@ -5,7 +5,7 @@
 
 <p align="center">
   <kbd>
-<img src="src\assets\demo video gif 2.gi"></img>
+<img src="src\assets\Harsh Jain _ Software Developer Portfolio - Google Chrome 2026-02-04 19-17-23.mp4"></img>
   </kbd>
 </p>
 

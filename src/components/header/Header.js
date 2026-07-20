@@ -10,7 +10,8 @@ const navItems = [
   {label: "Experience", id: "experience", icon: "fas fa-briefcase"},
   {label: "Projects", id: "projects", icon: "fas fa-code"},
   {label: "Achievements", id: "achievements", icon: "fas fa-trophy"},
-  {label: "Contact", id: "contact", icon: "fas fa-envelope"}
+  {label: "Contact", id: "contact", icon: "fas fa-envelope"},
+  {label: "Resume", id: "resume", icon: "fas fa-file-alt", isExternal: true, url: greeting.resumeLink}
 ];
 
 function Header() {
@@ -64,18 +65,33 @@ function Header() {
         {/* Center pill nav */}
         <nav className="pill-nav">
           <ul>
-            {navItems.map(item => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={active === item.id ? "pill-link active" : "pill-link"}
-                  onClick={e => handleNav(e, item.id)}
-                >
-                  <i className={item.icon} />
-                  <span>{item.label}</span>
-                </a>
-              </li>
-            ))}
+            {navItems.map(item => {
+              if (item.isExternal && !item.url) return null; // Don't render if resume link is empty
+              return (
+                <li key={item.id}>
+                  {item.isExternal ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pill-link"
+                    >
+                      <i className={item.icon} />
+                      <span>{item.label}</span>
+                    </a>
+                  ) : (
+                    <a
+                      href={`#${item.id}`}
+                      className={active === item.id ? "pill-link active" : "pill-link"}
+                      onClick={e => handleNav(e, item.id)}
+                    >
+                      <i className={item.icon} />
+                      <span>{item.label}</span>
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -102,18 +118,33 @@ function Header() {
       {/* Mobile dropdown */}
       <nav className={`mobile-nav ${menuOpen ? "show" : ""} ${isDark ? "dark-glass" : ""}`}>
         <ul>
-          {navItems.map(item => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={active === item.id ? "mobile-link active" : "mobile-link"}
-                onClick={e => handleNav(e, item.id)}
-              >
-                <i className={item.icon} />
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {navItems.map(item => {
+            if (item.isExternal && !item.url) return null;
+            return (
+              <li key={item.id}>
+                {item.isExternal ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mobile-link"
+                  >
+                    <i className={item.icon} />
+                    {item.label}
+                  </a>
+                ) : (
+                  <a
+                    href={`#${item.id}`}
+                    className={active === item.id ? "mobile-link active" : "mobile-link"}
+                    onClick={e => handleNav(e, item.id)}
+                  >
+                    <i className={item.icon} />
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>

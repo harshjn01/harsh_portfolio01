@@ -1,0 +1,58 @@
+@import "../../_globalColor";
+
+.experience-section {
+  padding: 5rem 0;
+}
+
+.experience-inner {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.experience-cards-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.experience-cards-div > * {
+  // Grow to fill the row, but cap width so a lone card centers instead of
+  // stranding a big empty gap beside it.
+  flex: 1 1 300px;
+  max-width: 360px;
+}
+
+@media (max-width: 768px) {
+  .experience-cards-div > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* legacy */
+.experience-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.experience-container {
+  display: flex;
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.experience-container > * {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .experience-heading {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}

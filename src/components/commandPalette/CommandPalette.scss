@@ -1,0 +1,161 @@
+@import "../../_globalColor";
+
+.cmdk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 14vh;
+  background: rgba(6, 6, 14, 0.6);
+  backdrop-filter: blur(6px);
+  animation: cmdkFade 0.15s ease;
+}
+
+@keyframes cmdkFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cmdk-panel {
+  width: min(560px, 92vw);
+  background: $darkCardBG;
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(124, 58, 237, 0.15);
+  overflow: hidden;
+  animation: cmdkPop 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cmdkPop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cmdk-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cmdk-search-icon {
+  color: $accentGlow;
+  font-size: 0.95rem;
+}
+
+.cmdk-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: $textColorDark;
+  font-size: 1.02rem;
+
+  &::placeholder {
+    color: $textColorDarkSub;
+  }
+}
+
+.cmdk-esc {
+  font-size: 0.7rem;
+  color: $textColorDarkSub;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cmdk-list {
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.cmdk-group {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $textColorDarkSub;
+  padding: 0.6rem 0.75rem 0.3rem;
+}
+
+.cmdk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: $textColorDark;
+  transition: background 0.12s ease;
+}
+
+.cmdk-item.active {
+  background: rgba(124, 58, 237, 0.22);
+}
+
+.cmdk-item-icon {
+  width: 1.5rem;
+  text-align: center;
+  color: $accentGlow;
+  font-size: 0.95rem;
+}
+
+.cmdk-item-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cmdk-item-hint {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: $textColorDarkSub;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 45%;
+}
+
+.cmdk-empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: $textColorDarkSub;
+  font-size: 0.9rem;
+}
+
+.cmdk-footer {
+  display: flex;
+  gap: 1.2rem;
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.72rem;
+  color: $textColorDarkSub;
+
+  kbd {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    padding: 0.05rem 0.35rem;
+    margin-right: 0.2rem;
+    font-family: inherit;
+  }
+}

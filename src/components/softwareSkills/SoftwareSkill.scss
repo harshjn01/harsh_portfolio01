@@ -1,0 +1,70 @@
+@import "../../_globalColor";
+
+.dev-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+  margin: 0 0 1rem;
+}
+
+.software-skill-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid $lightBorder1;
+  background: $lightBackground2;
+  cursor: default;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  min-width: 68px;
+
+  &:hover {
+    border-color: $accentPrimary;
+    transform: translateY(-2px);
+  }
+}
+
+.dark-mode .software-skill-inline {
+  background: $darkCardBG;
+  border-color: $darkBorder;
+
+  &:hover {
+    border-color: $accentGlow;
+  }
+}
+
+.software-skill-inline > i {
+  font-size: 1.7rem;
+  color: $subTitle;
+  transition: color 0.2s;
+}
+
+.software-skill-inline:hover > i {
+  color: $accentText;
+}
+
+.dark-mode .software-skill-inline:hover > i {
+  color: $accentGlow;
+}
+
+.software-skill-inline > p {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: $subTitle;
+  text-align: center;
+  margin: 0;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.software-skill-inline:hover > p {
+  color: $accentText;
+}
+
+.dark-mode .software-skill-inline:hover > p {
+  color: $accentGlow;
+}

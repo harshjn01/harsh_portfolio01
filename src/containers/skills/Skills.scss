@@ -1,0 +1,149 @@
+@import "../../_globalColor";
+
+.skills-section {
+  padding: 5rem 0;
+}
+
+.skills-inner {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+// section-header / section-title / section-subtitle come from the shared
+// App.scss rules — no local override, so this section stays consistent
+// (left-aligned, mono label, no eyebrow pill) with the rest of the page.
+
+.skills-grid {
+  margin-top: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.skills-lottie {
+  flex: 1;
+  max-width: 440px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.skills-content {
+  flex: 1;
+}
+
+.skills-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.skill-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: $textColor;
+  padding: 0.6rem 0.9rem;
+  border-radius: 4px;
+  background: $lightBackground2;
+  border: 1px solid $lightBorder1;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $accentPrimary;
+  }
+}
+
+.dark-mode .skill-bullet {
+  color: $textColorDarkSub;
+  background: $darkCardBG;
+  border-color: $darkBorder;
+
+  &:hover {
+    border-color: $accentGlow;
+  }
+}
+
+/* subTitle used globally */
+.subTitle {
+  color: $subTitle;
+}
+
+/* legacy compat */
+.main {
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.skills-main-div {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.skills-text-div {
+  margin-left: 50px;
+}
+
+.skills-main-div > * {
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.skills-image-div > img {
+  max-width: 100%;
+  height: auto;
+}
+
+.skills-heading {
+  font-size: 56px;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .skills-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skills-lottie {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-heading {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .skills-main-div {
+    flex-direction: column;
+  }
+
+  .skills-text-div {
+    margin-left: 0;
+    margin: 20px;
+  }
+
+  .skills-text {
+    font-size: 16px;
+  }
+
+  .skills-text-subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .skills-image-div {
+    order: 2;
+  }
+}

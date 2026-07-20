@@ -1,0 +1,59 @@
+@import "../../_globalColor";
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  // Above every overlay in the app (command palette 100000, detail modal
+  // 100010) so the cursor never disappears behind a popup.
+  z-index: 100050;
+  will-change: transform;
+  margin-left: 0;
+  margin-top: 0;
+  display: none; // shown only when the custom cursor activates
+}
+
+.custom-cursor-active .cursor-dot,
+.custom-cursor-active .cursor-ring {
+  display: block;
+}
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 12px 2px rgba(167, 139, 250, 0.9);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(167, 139, 250, 0.7);
+  // Fixed box size — hover/press growth is driven by JS as part of the same
+  // `transform` string used for position tracking (see CustomCursor.js),
+  // so the ring only ever touches transform/background/border — no
+  // width/height/margin animation (avoids layout thrash).
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cursor-ring--hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.9);
+}
+
+// Hide the native cursor only when the custom one is active.
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active .btn,
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active [role="button"] {
+  cursor: none;
+}

@@ -1,0 +1,14 @@
+@import "../../_globalColor";
+
+.education-section {
+  padding: 5rem 0;
+}
+
+.education-card-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

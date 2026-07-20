@@ -1,0 +1,125 @@
+@import "../../_globalColor";
+
+.proficiency-section {
+  padding: 4rem 0;
+}
+
+.proficiency-inner {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.proficiency-bars {
+  flex: 1;
+}
+
+.proficiency-lottie {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.skill {
+  margin-bottom: 1.5rem;
+}
+
+.skill-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $titleColor;
+}
+
+.dark-mode .skill-label-row {
+  color: $textColorDark;
+}
+
+.skill-pct {
+  color: $accentText;
+  font-weight: 700;
+}
+
+.dark-mode .skill-pct {
+  color: $accentGlow;
+}
+
+.meter {
+  height: 6px;
+  background: $progressBarBackground;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  width: 100%;
+  background: $accentPrimary;
+  transform-origin: left;
+  // Fill grows via transform (compositor-only), not width, to avoid layout
+  // thrash; the element is always full-width and scaled down initially.
+  transform: scaleX(var(--pct, 0));
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* legacy compat */
+.skills-container {
+  display: flex;
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.skills-container > * {
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.skills-image > img {
+  margin-left: 80px;
+  max-width: 90%;
+  height: auto;
+}
+
+.skills-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: $titleColor;
+  margin-bottom: 1.5rem;
+}
+
+.dark-mode .skills-heading {
+  color: $textColorDark;
+}
+
+@media (max-width: 900px) {
+  .proficiency-inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    flex-direction: column;
+  }
+
+  .skills-bar {
+    line-height: 3rem;
+    margin: 20px;
+  }
+
+  .skills-image {
+    display: none;
+  }
+}

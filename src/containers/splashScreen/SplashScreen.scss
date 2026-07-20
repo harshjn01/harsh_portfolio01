@@ -1,0 +1,15 @@
+@import "../../_globalColor";
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $darkBackground;
+  width: 300px;
+  max-width: 60vw;
+  margin: 0 auto;
+  height: 100vh;
+}

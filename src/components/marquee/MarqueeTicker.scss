@@ -1,0 +1,71 @@
+@import "../../_globalColor";
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 1.4rem 0;
+  border-top: 1px solid $darkBorder;
+  border-bottom: 1px solid $darkBorder;
+  // Fade the edges so items enter/exit softly.
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  white-space: nowrap;
+
+  i {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+  }
+}
+
+.marquee-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $textColorDarkSub;
+  letter-spacing: 0.01em;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    // Move by half the track (the list is duplicated) for a seamless loop.
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

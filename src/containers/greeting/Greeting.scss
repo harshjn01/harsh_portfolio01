@@ -1,0 +1,538 @@
+@import "../../_globalColor";
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 96px 0 3rem;
+  box-sizing: border-box;
+}
+
+/* ── Animated background ───────────────────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  will-change: transform;
+  animation: float 16s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 480px;
+  height: 480px;
+  top: -160px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.55), transparent 70%);
+}
+
+.blob-2 {
+  width: 420px;
+  height: 420px;
+  bottom: -140px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.4), transparent 70%);
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 45%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  animation-delay: -9s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-30px, 25px) scale(0.95); }
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+}
+
+.dark-hero .blob {
+  opacity: 0.6;
+}
+
+/* ── Layout ────────────────────────────────────────────────────── */
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1.15;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* ── Badge ─────────────────────────────────────────────────────── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accentGlow;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.28);
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: ping 1.8s ease-in-out infinite;
+}
+
+@keyframes ping {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* ── Title ─────────────────────────────────────────────────────── */
+.hero-title {
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: $titleColor;
+  margin: 0;
+}
+
+.dark-hero .hero-title {
+  // Animated gradient name. The wave emoji is reset below so it isn't clipped
+  // to transparent by background-clip: text.
+  background: linear-gradient(120deg, #c4b5fd, #818cf8, #22d3ee, #c4b5fd);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.dark-hero .hero-title .wave-emoji {
+  // Explicit opaque fill (not `initial`, which resolved to transparent) so the
+  // color emoji renders instead of being clipped by the gradient text.
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+}
+
+.hero-role {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: $subTitle;
+  margin: 0;
+}
+
+.dark-hero .hero-role {
+  color: #cbd5e1;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #7c3aed, #6366f1, #0ea5e9, #7c3aed);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 300% center; }
+}
+
+/* ── Subtitle ──────────────────────────────────────────────────── */
+.hero-sub {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.8;
+  color: $subTitle;
+  max-width: 540px;
+  margin: 0;
+}
+
+.dark-hero .hero-sub {
+  color: $textColorDarkSub;
+}
+
+.hero-social {
+  margin: 0.25rem 0;
+}
+
+/* ── CTA buttons ───────────────────────────────────────────────── */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+
+  i {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(124, 58, 237, 0.55);
+    i {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 14px;
+  background: transparent;
+  border: 2px solid rgba(124, 58, 237, 0.4);
+  color: $accentPrimary;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: $accentPrimary;
+    transform: translateY(-3px);
+  }
+}
+
+.dark-hero .btn-ghost {
+  color: $accentGlow;
+}
+
+/* ── Visual: photo + orbiting tech stack ───────────────────────── */
+.hero-visual {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 460px;
+}
+
+.visual-glow {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.28), transparent 70%);
+  filter: blur(55px);
+  z-index: 0;
+}
+
+.orbit-stage {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+/* dashed guide rings */
+.orbit-guide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(124, 58, 237, 0.25);
+}
+
+.orbit-guide-outer {
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-guide-inner {
+  width: 64%;
+  height: 64%;
+  border-color: rgba(14, 165, 233, 0.22);
+}
+
+/* center photo */
+.photo-frame {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5, #0ea5e9);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.4);
+  z-index: 3;
+  animation: bob 6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 4px solid #ffffff;
+  background: #ffffff;
+}
+
+.dark-hero .photo-img {
+  border-color: #0f0f1a;
+  background: #0f0f1a;
+}
+
+/* orbit rings holding icons */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.orbit-outer {
+  width: 100%;
+  height: 100%;
+  animation: spin 26s linear infinite;
+  z-index: 2;
+}
+
+.orbit-inner {
+  width: 64%;
+  height: 64%;
+  animation: spin 20s linear infinite reverse;
+  z-index: 4;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spin-rev {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes spin-fwd {
+  to { transform: rotate(360deg); }
+}
+
+/* icon badges */
+.orbit-icon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+}
+
+.orbit-icon-sm {
+  width: 44px;
+  height: 44px;
+}
+
+.orbit-icon-inner {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  /* counter the outer ring spin so glyph stays upright */
+  animation: spin-rev 26s linear infinite;
+
+  i {
+    font-size: 1.4rem;
+  }
+}
+
+.orbit-icon-sm .orbit-icon-inner i {
+  font-size: 1.15rem;
+}
+
+/* inner ring spins reverse, so counter the other way */
+.orbit-icon-inner-rev {
+  animation: spin-fwd 20s linear infinite;
+}
+
+.dark-hero .orbit-icon-inner {
+  background: #1a1a2e;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.25);
+}
+
+/* ── Wave ──────────────────────────────────────────────────────── */
+.wave-emoji {
+  display: inline-block;
+  margin-left: 0.5rem;
+  animation: wave 1.8s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0%, 50%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-12deg); }
+  20%, 40% { transform: rotate(12deg); }
+}
+
+/* ── Scroll hint ───────────────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.mouse {
+  display: block;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(124, 58, 237, 0.5);
+  border-radius: 100px;
+  position: relative;
+}
+
+.wheel {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  border-radius: 100px;
+  background: $accentPrimary;
+  animation: scroll 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll {
+  0% { opacity: 0; transform: translate(-50%, 0); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, 14px); }
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .hero-badge {
+    margin: 0 auto;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+  }
+
+  .hero-cta,
+  .hero-social {
+    justify-content: center;
+    display: flex;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+    margin: 0 auto;
+  }
+
+  .hero-social {
+    justify-content: center;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbit-stage {
+    width: 320px;
+    height: 320px;
+  }
+
+  .photo-frame {
+    width: 165px;
+    height: 165px;
+  }
+
+  .orbit-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .orbit-icon-sm {
+    width: 36px;
+    height: 36px;
+  }
+
+  .orbit-icon-inner i {
+    font-size: 1.1rem;
+  }
+
+  .hero-visual {
+    min-height: 340px;
+  }
+}

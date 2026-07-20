@@ -1,0 +1,324 @@
+@import "../../_globalColor";
+
+/* ── Floating glass header wrapper ─────────────────────────────── */
+.header-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  transition: padding 0.3s ease;
+}
+
+.header-wrap.scrolled {
+  padding: 0.5rem 1.5rem;
+}
+
+.glass-header {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.7rem 0.55rem 1.25rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.dark-glass.glass-header {
+  background: rgba(20, 20, 35, 0.7);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.scrolled .glass-header {
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.18);
+}
+
+/* ── Brand ─────────────────────────────────────────────────────── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.brand-name {
+  font-family: "Agustina Regular", cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $titleColor;
+  white-space: nowrap;
+}
+
+.dark-glass .brand-name {
+  color: $textColorDark;
+}
+
+/* ── Center pill nav ───────────────────────────────────────────── */
+.pill-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pill-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $subTitle;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+
+  i {
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+
+  &:hover {
+    color: $accentPrimary;
+    background: rgba(124, 58, 237, 0.08);
+  }
+}
+
+.dark-glass .pill-link {
+  color: $textColorDarkSub;
+
+  &:hover {
+    color: $accentGlow;
+    background: rgba(124, 58, 237, 0.16);
+  }
+}
+
+.pill-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+
+  i {
+    opacity: 1;
+  }
+}
+
+.dark-glass .pill-link.active {
+  color: #fff;
+}
+
+/* ── Right actions ─────────────────────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.toggle-holder {
+  display: flex;
+  align-items: center;
+}
+
+.hire-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.35rem;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.55);
+    filter: brightness(1.08);
+  }
+}
+
+/* ── Burger (mobile) ───────────────────────────────────────────── */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.1);
+  cursor: pointer;
+  transition: background 0.2s;
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: $accentPrimary;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  &.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
+  }
+  &.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* ── Mobile dropdown ───────────────────────────────────────────── */
+.mobile-nav {
+  position: absolute;
+  top: calc(100% - 0.5rem);
+  left: 1.5rem;
+  right: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.dark-glass {
+    background: rgba(20, 20, 35, 0.97);
+    border-color: rgba(124, 58, 237, 0.22);
+  }
+
+  &.show {
+    max-height: 500px;
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.6rem;
+  }
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $textColor;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  i {
+    width: 20px;
+    text-align: center;
+    color: $accentPrimary;
+  }
+
+  &:hover {
+    background: rgba(124, 58, 237, 0.08);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(79, 70, 229, 0.1));
+    color: $accentPrimary;
+
+    i {
+      color: $accentPrimary;
+    }
+  }
+}
+
+.dark-glass .mobile-link {
+  color: $textColorDark;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pill-link span {
+    display: none;
+  }
+  .pill-link {
+    padding: 0.6rem 0.75rem;
+    i {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .pill-nav {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .hire-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-wrap {
+    padding: 0.75rem;
+  }
+  .glass-header {
+    padding: 0.5rem 0.6rem 0.5rem 1rem;
+  }
+  .brand-name {
+    display: none;
+  }
+  .mobile-nav {
+    left: 0.75rem;
+    right: 0.75rem;
+  }
+}

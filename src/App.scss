@@ -1,0 +1,130 @@
+@import "./globalColor";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Montserrat Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $lightBackground1;
+  color: $textColor;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode body,
+.dark-mode {
+  background: $darkBackground !important;
+  color: $textColorDark;
+}
+
+/* ── Global Section Helpers ────────────────────────────────────── */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $accentPrimary;
+  background: rgba(124, 58, 237, 0.08);
+  padding: 0.28rem 0.85rem;
+  border-radius: 100px;
+  margin-bottom: 0.65rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $titleColor;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .section-title,
+.dark-mode .contact-title {
+  // Animated gradient text for section headings (dark theme).
+  background: linear-gradient(120deg, #c4b5fd, #818cf8, #22d3ee, #c4b5fd);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: titleShimmer 6s linear infinite;
+}
+
+@keyframes titleShimmer {
+  to {
+    background-position: 300% center;
+  }
+}
+
+.section-subtitle {
+  font-size: 0.97rem;
+  color: $subTitle;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.35);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* ── Selection ───────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(124, 58, 237, 0.2);
+  color: inherit;
+}
+
+/* ── Utility ──────────────────────────────────────────────────── */
+
+.subTitle {
+  color: $subTitle;
+}
+
+.App {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.App-link {
+  color: $appLink;
+}

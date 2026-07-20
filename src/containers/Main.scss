@@ -1,0 +1,43 @@
+@import "../_globalColor";
+
+/*
+ * Full-page dark shell. Scoped to the top-level wrapper (direct child of #root)
+ * so that inner elements which reuse the `dark-mode` class purely for text
+ * theming (e.g. project card titles) don't inherit `min-height: 100vh` and a
+ * page background — which previously blew each card up to ~1900px tall.
+ */
+#root > .dark-mode {
+  background-color: $darkBackground;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode {
+  color: $textColorDark;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  animation: pageFade 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Offset anchor targets so they aren't hidden under the fixed header */
+#home,
+#about,
+#experience,
+#projects,
+#achievements,
+#contact {
+  scroll-margin-top: 84px;
+}

@@ -1,0 +1,61 @@
+@import "../../_globalColor";
+
+/* One continuous readout line — not four repeated big-number/label cards. */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 1.75rem auto 3.5rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid $lightBorder1;
+  border-bottom: 1px solid $lightBorder1;
+}
+
+.dark-mode-stats {
+  border-color: $darkBorder;
+}
+
+.stat-item {
+  font-size: 0.85rem;
+  color: $subTitle;
+  white-space: nowrap;
+}
+
+.dark-mode-stats .stat-item {
+  color: $textColorDarkSub;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: $accentText;
+}
+
+.dark-mode-stats .stat-value {
+  color: $accentGlow;
+}
+
+.stat-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $subTitle;
+  opacity: 0.4;
+}
+
+.dark-mode-stats .stat-sep {
+  background: $textColorDarkSub;
+}
+
+@media (max-width: 600px) {
+  .stats-bar {
+    gap: 0.4rem 0.7rem;
+  }
+
+  .stat-item {
+    font-size: 0.78rem;
+  }
+}

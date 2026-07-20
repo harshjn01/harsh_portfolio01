@@ -1,0 +1,144 @@
+@import "../../_globalColor";
+
+.edu-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 1.75rem;
+  background: $lightBackground2;
+  border: 1px solid $lightBorder1;
+  border-radius: 18px;
+  border-left: 4px solid $accentPrimary;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateX(6px);
+    box-shadow: 0 16px 36px rgba(124, 58, 237, 0.12);
+    border-left-color: #0ea5e9;
+  }
+}
+
+.edu-card-dark {
+  background: $darkCardBG;
+  border-color: $darkBorder;
+  border-left-color: $accentPrimary;
+
+  &:hover {
+    box-shadow: 0 16px 36px rgba(124, 58, 237, 0.25);
+  }
+}
+
+.edu-logo-wrap {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 16px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: grid;
+  place-items: center;
+}
+
+.edu-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.edu-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.edu-school {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: $titleColor;
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.edu-card-dark .edu-school {
+  color: $textColorDark;
+}
+
+.edu-subheader {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $cardSubtitle;
+  margin: 0 0 0.6rem;
+}
+
+.edu-card-dark .edu-subheader {
+  color: $textColorDarkSub;
+}
+
+.edu-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $subTitle;
+  background: rgba(124, 58, 237, 0.08);
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+
+  i {
+    font-size: 0.72rem;
+    color: $accentPrimary;
+  }
+}
+
+.edu-desc {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: $cardSubtitle;
+  line-height: 1.6;
+}
+
+.edu-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.edu-bullet {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $accentPrimary;
+  margin-bottom: 0.4rem;
+
+  &::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+  }
+}
+
+.edu-card-dark .edu-bullet {
+  color: $accentGlow;
+}
+
+@media (max-width: 600px) {
+  .edu-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .edu-duration {
+    margin: 0 auto;
+  }
+
+  .edu-bullets {
+    display: inline-block;
+    text-align: left;
+  }
+}

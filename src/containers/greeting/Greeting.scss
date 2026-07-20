@@ -536,3 +536,41 @@
     min-height: 340px;
   }
 }
+
+/* ── Parallax Interactive Styles ───────────────────────────────── */
+.parallax-hero {
+  --mouse-x: 0;
+  --mouse-y: 0;
+  perspective: 1200px;
+}
+
+/* Base properties to ensure smoothness and 3D context */
+.parallax-hero .hero-bg,
+.parallax-hero .hero-text,
+.parallax-hero .hero-visual {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Background moves slow and inverted */
+.parallax-hero .hero-bg {
+  transform: translate3d(calc(var(--mouse-x) * -20px), calc(var(--mouse-y) * -20px), 0);
+}
+
+/* Text moves slightly towards cursor */
+.parallax-hero .hero-text {
+  transform: translate3d(calc(var(--mouse-x) * 15px), calc(var(--mouse-y) * 15px), 20px);
+}
+
+/* Visuals/Avatar have the most pronounced tilt and translational shift */
+.parallax-hero .hero-visual {
+  transform: 
+    translate3d(calc(var(--mouse-x) * -30px), calc(var(--mouse-y) * -30px), 60px)
+    rotateX(calc(var(--mouse-y) * -12deg))
+    rotateY(calc(var(--mouse-x) * 12deg));
+}
+
+/* Let's make the orbit stage pop out even more during tilt */
+.parallax-hero .orbit-stage {
+  transform: translateZ(40px);
+}

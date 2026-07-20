@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import {Fade} from "react-reveal";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
@@ -24,10 +24,54 @@ const orbitInner = [
 
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    // Respect accessibility and battery constraints
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    if (prefersReducedMotion || isTouchDevice) return;
+
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animationFrameId;
+
+    const handleMouseMove = e => {
+      // Calculate mouse position normalized from -1 to 1
+      targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    };
+
+    const animate = () => {
+      // LERP (Linear Interpolation) for buttery smooth spring-like easing
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      hero.style.setProperty("--mouse-x", currentX.toFixed(4));
+      hero.style.setProperty("--mouse-y", currentY.toFixed(4));
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   if (!greeting.displayGreeting) return null;
 
   return (
-    <section className={isDark ? "hero dark-hero" : "hero"} id="greeting">
+    <section className={isDark ? "hero dark-hero parallax-hero" : "hero parallax-hero"} id="greeting" ref={heroRef}>
       {/* animated background */}
       <div className="hero-bg">
         <span className="blob blob-1" />

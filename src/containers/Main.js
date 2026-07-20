@@ -27,6 +27,7 @@ import InteractiveFX from "../components/fx/InteractiveFX";
 import MarqueeTicker from "../components/marquee/MarqueeTicker";
 import CommandPalette from "../components/commandPalette/CommandPalette";
 import AskHarsh from "../components/askHarsh/AskHarsh";
+import ResumeViewer from "../components/resumeViewer/ResumeViewer";
 
 import "./Main.scss";
 
@@ -34,6 +35,7 @@ const Main = () => {
   const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
   const [isDark, setIsDark] = useLocalStorage("isDark", darkPref.matches);
   const [isShowingSplash, setIsShowingSplash] = useState(true);
+  const [viewingResume, setViewingResume] = useState(false);
 
   useEffect(() => {
     if (splashScreen.enabled) {
@@ -54,7 +56,8 @@ const Main = () => {
             <ScrollProgress />
             <GrainOverlay />
             <CustomCursor />
-            <Header />
+            {viewingResume && <ResumeViewer onClose={() => setViewingResume(false)} />}
+            <Header onShowResume={() => setViewingResume(true)} />
             <main className="page-wrapper">
               <div id="home" className="section-anchor">
                 <Greeting />

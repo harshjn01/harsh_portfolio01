@@ -23,8 +23,7 @@ const greeting = {
   subTitle: emoji(
     "A passionate Full Stack Developer 🚀 building modern Web Applications with React.js and AI-powered features using Claude AI & OpenAI — turning real-world ideas into practical software solutions."
   ),
-  resumeLink:
-    "https://drive.google.com/file/d/1WxgpZ46r0GwQTWINAGko7qIfMFTRwpx7/view?usp=drive_link",
+  resumeLink: "/Harsh_Resume.pdf",
   displayGreeting: true
 };
 

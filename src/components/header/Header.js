@@ -14,7 +14,7 @@ const navItems = [
   {label: "Resume", id: "resume", icon: "fas fa-file-alt", isExternal: true, url: greeting.resumeLink}
 ];
 
-function Header() {
+function Header({onShowResume}) {
   const {isDark} = useContext(StyleContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -72,9 +72,15 @@ function Header() {
                   {item.isExternal ? (
                     <a
                       href={item.url}
-                      target="_blank"
+                      target={item.id === "resume" ? undefined : "_blank"}
                       rel="noopener noreferrer"
                       className="pill-link"
+                      onClick={(e) => {
+                        if (item.id === "resume" && onShowResume) {
+                          e.preventDefault();
+                          onShowResume();
+                        }
+                      }}
                     >
                       <i className={item.icon} />
                       <span>{item.label}</span>
@@ -125,9 +131,16 @@ function Header() {
                 {item.isExternal ? (
                   <a
                     href={item.url}
-                    target="_blank"
+                    target={item.id === "resume" ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     className="mobile-link"
+                    onClick={(e) => {
+                      if (item.id === "resume" && onShowResume) {
+                        e.preventDefault();
+                        setMenuOpen(false);
+                        onShowResume();
+                      }
+                    }}
                   >
                     <i className={item.icon} />
                     {item.label}

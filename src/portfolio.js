@@ -35,9 +35,10 @@ const socialMediaLinks = {
   linkedin: "https://www.linkedin.com/in/harshjain101/",
   gmail: "harshjain6032@gmail.com",
   instagram: "https://www.instagram.com/harsh_j.n/",
-  gitlab: "https://gitlab.com/keshav5339",
-  facebook: "https://www.facebook.com/keshav.agarwal.7542001",
+  gitlab: "https://gitlab.com/hjain6032",
+  facebook: "https://www.facebook.com/profile.php?id=100022886269680",
   twitter: "https://x.com/Hjphoenix6032",
+  medium: "https://medium.com/@harshjain6032",
   display: true
 };
 
@@ -288,7 +289,7 @@ const blogSection = {
   displayMediumBlogs: "true",
   blogs: [
     {
-      url: "https://medium.com/@keshavagarwal5339/the-rise-of-ai-in-everyday-technology-e63bc8a7f772",
+      url: "https://medium.com/@harshjain6032",
       title: "The Rise of AI in Everyday Technology",
       description:
         "From smartphones to smart recommendations, AI is everywhere. Breaking down how AI is shaping our everyday technology."
@@ -340,8 +341,8 @@ const contactInfo = {
 // Twitter Section
 
 const twitterDetails = {
-  userName: "KeshavAgar35135",
-  display: false
+  userName: "Hjphoenix6032",
+  display: true
 };
 
 const isHireable = true;

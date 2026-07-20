@@ -262,7 +262,12 @@ const achievementSection = {
         "Hands-on training in data modeling, DAX, and building interactive dashboards and reports to turn raw data into actionable business insights.",
       image: "",
       imageAlt: "Microsoft Power BI",
-      footerLink: []
+      footerLink: [
+        {
+          name: "View Certificate",
+          url: "/PowerBI_Certificate.pdf"
+        }
+      ]
     },
     {
       title: "Tata Group — Data Visualisation Job Simulation",

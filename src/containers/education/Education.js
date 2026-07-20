@@ -11,7 +11,7 @@ export default function Education() {
     <section className="education-section" id="education">
       <Fade bottom duration={800}>
         <div className="section-header">
-          <span className="section-label">// background</span>
+          <span className="section-label">{"// background"}</span>
           <h2 className="section-title">Education</h2>
         </div>
       </Fade>

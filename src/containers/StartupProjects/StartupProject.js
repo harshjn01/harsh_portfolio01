@@ -15,7 +15,7 @@ export default function StartupProject() {
       <div className="projects-inner">
         <Fade bottom duration={800}>
           <div className="section-header">
-            <span className="section-label">// project index</span>
+            <span className="section-label">{"// project index"}</span>
             <h2 className="section-title">{bigProjects.title}</h2>
             <p className="section-subtitle">{bigProjects.subtitle}</p>
           </div>

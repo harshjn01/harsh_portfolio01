@@ -16,7 +16,7 @@ export default function Achievement() {
       <div className="achievement-inner">
         <Fade bottom duration={800}>
           <div className="section-header">
-            <span className="section-label">// credentials.log</span>
+            <span className="section-label">{"// credentials.log"}</span>
             <h2 className="section-title">{achievementSection.title}</h2>
             <p className="section-subtitle">{achievementSection.subtitle}</p>
           </div>

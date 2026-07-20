@@ -9,7 +9,7 @@ export default function Contact() {
       <div className="contact-inner">
         <Fade left duration={1000}>
           <div className="contact-header">
-            <span className="section-label">// get in touch</span>
+            <span className="section-label">{"// get in touch"}</span>
             <h2 className="contact-title">{contactInfo.title}</h2>
             <p className="contact-subtitle">{contactInfo.subtitle}</p>
 

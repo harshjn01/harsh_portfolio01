@@ -14,7 +14,7 @@ export default function StackProgress() {
         <div className="proficiency-inner">
           <div className="proficiency-bars">
             <div className="section-header" style={{textAlign: "left", marginBottom: "2rem"}}>
-              <span className="section-label">// proficiency</span>
+              <span className="section-label">{"// proficiency"}</span>
               <h2 className="section-title">Tech Stack Level</h2>
             </div>
             {techStack.experience.map((exp, i) => (

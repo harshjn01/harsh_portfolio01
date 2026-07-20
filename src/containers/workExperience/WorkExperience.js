@@ -16,7 +16,7 @@ export default function WorkExperience() {
       <div className="experience-inner">
         <Fade bottom duration={800}>
           <div className="section-header">
-            <span className="section-label">// career.log</span>
+            <span className="section-label">{"// career.log"}</span>
             <h2 className="section-title">Work Experience</h2>
             <p className="section-subtitle">
               Roles and responsibilities I've taken on during my journey as a developer.

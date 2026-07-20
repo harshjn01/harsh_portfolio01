@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.6e0b3446.css",
+    "main.js": "./static/js/main.6668572b.js",
+    "static/media/harsh-contact.png": "./static/media/harsh-contact.9f9a9efad7e1753a881c.png",
+    "static/media/pic2.png": "./static/media/pic2.8465de80abc45ba0a2be.png",
+    "static/media/svgms.png": "./static/media/svgms.d7f395e23349ff409af6.png",
+    "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/mepic.jpg": "./static/media/mepic.b4f49b9c98e8287619c1.jpg",
+    "static/media/Agustina.woff": "./static/media/Agustina.eb0c59dda4cc308cba96.woff",
+    "static/media/JECRC LOGO2.png": "./static/media/JECRC LOGO2.938adbb8b9e40a66a2da.png",
+    "static/media/forage.png": "./static/media/forage.05944247fb77c141228e.png",
+    "static/media/developerActivity.svg": "./static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
+    "static/media/zeetronLogo.jpg": "./static/media/zeetronLogo.25efbf4869bf96bc27e2.jpg",
+    "static/media/irrigation.png": "./static/media/irrigation.2c0793988ca7bc0ea96d.png",
+    "static/media/skill.svg": "./static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
+    "static/media/chartedeLogo.webp": "./static/media/chartedeLogo.b139cffa6ff7807ea66d.webp",
+    "static/media/phoenixLogo.svg": "./static/media/phoenixLogo.2f3bb36e0b367f57bc5367d4c2699f65.svg",
+    "index.html": "./index.html",
+    "main.6e0b3446.css.map": "./static/css/main.6e0b3446.css.map",
+    "main.6668572b.js.map": "./static/js/main.6668572b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e0b3446.css",
+    "static/js/main.6668572b.js"
+  ]
+}

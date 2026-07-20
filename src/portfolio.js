@@ -333,7 +333,7 @@ const contactInfo = {
   email_address: "harshjain6032@gmail.com",
   location: "Jaipur, Rajasthan, India",
   profileImagePath: require("./assets/images/pic2.png"),
-  aboutImagePath: require("./assets/images/harsh-about.jpg"),
+  aboutImagePath: require("./assets/images/mepic.jpg"),
   contactImagePath: require("./assets/images/harsh-contact.png")
 };
 

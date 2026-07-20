@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Education.scss";
 import EducationCard from "../../components/educationCard/EducationCard";
 import {educationInfo} from "../../portfolio";
 import {Fade} from "react-reveal";
+import StyleContext from "../../contexts/StyleContext";
 
 export default function Education() {
+  const {isDark} = useContext(StyleContext);
   if (!educationInfo.display) return null;
 
   return (
@@ -18,7 +20,7 @@ export default function Education() {
       <Fade bottom duration={1000} distance="20px">
         <div className="education-card-container">
           {educationInfo.schools.map((school, i) => (
-            <EducationCard key={i} school={school} />
+            <EducationCard key={i} school={school} isDark={isDark} />
           ))}
         </div>
       </Fade>

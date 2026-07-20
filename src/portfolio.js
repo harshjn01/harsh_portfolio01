@@ -145,18 +145,6 @@ const workExperiences = {
         "Managed data analysis, reporting, and dashboard creation for business insights."
       ],
       skills: ["SQL", "Python", "Power BI", "Data Analysis"]
-    },
-    {
-      role: "Event Coordinator",
-      company: "IIFA",
-      companylogo: require("./assets/images/iifa.jpg"),
-      date: "March 2025",
-      desc: "Organized and coordinated events for India's largest Gen-Next Fest.",
-      descBullets: [
-        "Coordinated event activities, enhancing the experience for thousands of attendees.",
-        "Assisted in on-ground operations and crowd management for large audiences."
-      ],
-      skills: ["Event Operations", "Crowd Management", "Coordination"]
     }
   ]
 };

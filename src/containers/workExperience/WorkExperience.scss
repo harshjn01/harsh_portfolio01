@@ -21,8 +21,8 @@
 .experience-cards-div > * {
   // Grow to fill the row, but cap width so a lone card centers instead of
   // stranding a big empty gap beside it.
-  flex: 1 1 300px;
-  max-width: 360px;
+  flex: 1 1 400px;
+  max-width: 500px;
 }
 
 @media (max-width: 768px) {

@@ -3,6 +3,7 @@ import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
 import {greeting} from "../../portfolio";
+import HireModal from "../hireModal/HireModal";
 
 const navItems = [
   {label: "Home", id: "home", icon: "fas fa-home"},
@@ -19,6 +20,7 @@ function Header({onShowResume}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
+  const [hireModalOpen, setHireModalOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -106,9 +108,9 @@ function Header({onShowResume}) {
           <div className="toggle-holder">
             <ToggleSwitch />
           </div>
-          <a href="#contact" className="hire-btn" onClick={e => handleNav(e, "contact")}>
+          <button className="hire-btn" onClick={() => setHireModalOpen(true)}>
             Hire Me
-          </a>
+          </button>
           <button
             className={`burger ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen(o => !o)}
@@ -160,6 +162,12 @@ function Header({onShowResume}) {
           })}
         </ul>
       </nav>
+      
+      <HireModal 
+        isOpen={hireModalOpen} 
+        onClose={() => setHireModalOpen(false)} 
+        isDark={isDark} 
+      />
     </div>
   );
 }

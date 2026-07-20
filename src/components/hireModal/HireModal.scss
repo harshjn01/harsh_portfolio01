@@ -1,0 +1,212 @@
+@import "../../_globalColor";
+
+.hire-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 1rem;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.hire-modal-content {
+  background: $lightBackground1;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+
+  .hire-modal-overlay.open & {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hire-modal-content.dark-mode {
+  background: $darkCardBG;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.hire-modal-bg-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(124, 58, 237, 0.15),
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hire-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: $subTitle;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: $accentPrimary;
+    transform: rotate(90deg);
+  }
+}
+
+.hire-modal-content.dark-mode .hire-modal-close {
+  color: $textColorDarkSub;
+  &:hover {
+    color: $accentGlow;
+  }
+}
+
+.hire-modal-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    color: $titleColor;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $subTitle;
+    margin: 0;
+  }
+}
+
+.hire-modal-content.dark-mode .hire-modal-header h2 {
+  color: $textColorDark;
+}
+.hire-modal-content.dark-mode .hire-modal-header p {
+  color: $textColorDarkSub;
+}
+
+.hire-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hire-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $titleColor;
+    margin-left: 0.2rem;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    background: $lightBackground2;
+    color: $textColor;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: $accentPrimary;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      background: $lightBackground1;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.hire-modal-content.dark-mode .hire-form-group {
+  label {
+    color: $textColorDark;
+  }
+
+  input,
+  select,
+  textarea {
+    background: rgba(15, 15, 26, 0.5);
+    border-color: rgba(124, 58, 237, 0.3);
+    color: $textColorDark;
+
+    &:focus {
+      border-color: $accentGlow;
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+      background: rgba(15, 15, 26, 0.8);
+    }
+  }
+}
+
+.hire-submit-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, $accentPrimary, $accentSecondary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}

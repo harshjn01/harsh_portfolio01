@@ -1,9 +1,9 @@
 import React from "react";
 import "./EducationCard.scss";
 
-export default function EducationCard({school}) {
+export default function EducationCard({school, isDark}) {
   return (
-    <div className="edu-card">
+    <div className={isDark ? "edu-card edu-card-dark" : "edu-card"}>
       <div className="edu-logo-wrap">
         <img className="edu-logo" src={school.logo} alt={school.schoolName} />
       </div>

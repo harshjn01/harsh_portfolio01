@@ -15,7 +15,7 @@
   &:hover {
     transform: translateX(6px);
     box-shadow: 0 16px 36px rgba(124, 58, 237, 0.12);
-    border-left-color: #0ea5e9;
+    border-left-color: $accentSecondary;
   }
 }
 

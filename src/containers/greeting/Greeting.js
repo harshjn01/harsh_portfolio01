@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {Fade} from "react-reveal";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
@@ -25,6 +25,7 @@ const orbitInner = [
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
   const heroRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     // Respect accessibility and battery constraints
@@ -40,21 +41,36 @@ export default function Greeting() {
     let targetY = 0;
     let currentX = 0;
     let currentY = 0;
+    
+    let pxTargetX = -1000;
+    let pxTargetY = -1000;
+    let pxCurrentX = -1000;
+    let pxCurrentY = -1000;
+    
     let animationFrameId;
 
     const handleMouseMove = e => {
       // Calculate mouse position normalized from -1 to 1
       targetX = (e.clientX / window.innerWidth - 0.5) * 2;
       targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+      
+      const rect = hero.getBoundingClientRect();
+      pxTargetX = e.clientX - rect.left;
+      pxTargetY = e.clientY - rect.top;
     };
 
     const animate = () => {
       // LERP (Linear Interpolation) for buttery smooth spring-like easing
       currentX += (targetX - currentX) * 0.08;
       currentY += (targetY - currentY) * 0.08;
+      
+      pxCurrentX += (pxTargetX - pxCurrentX) * 0.15;
+      pxCurrentY += (pxTargetY - pxCurrentY) * 0.15;
 
       hero.style.setProperty("--mouse-x", currentX.toFixed(4));
       hero.style.setProperty("--mouse-y", currentY.toFixed(4));
+      hero.style.setProperty("--px-mouse-x", pxCurrentX.toFixed(1) + "px");
+      hero.style.setProperty("--px-mouse-y", pxCurrentY.toFixed(1) + "px");
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -71,7 +87,22 @@ export default function Greeting() {
   if (!greeting.displayGreeting) return null;
 
   return (
-    <section className={isDark ? "hero dark-hero parallax-hero" : "hero parallax-hero"} id="greeting" ref={heroRef}>
+    <section 
+      className={isDark ? "hero dark-hero parallax-hero" : "hero parallax-hero"} 
+      id="greeting" 
+      ref={heroRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div 
+        className="hero-spotlight" 
+        style={{
+          background: isDark 
+            ? `radial-gradient(circle 600px at var(--px-mouse-x) var(--px-mouse-y), rgba(124, 58, 237, 0.15), transparent 70%)`
+            : `radial-gradient(circle 600px at var(--px-mouse-x) var(--px-mouse-y), rgba(124, 58, 237, 0.08), transparent 70%)`,
+          opacity: isHovered ? 1 : 0
+        }} 
+      />
       {/* animated background */}
       <div className="hero-bg">
         <span className="blob blob-1" />

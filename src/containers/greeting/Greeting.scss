@@ -574,3 +574,12 @@
 .parallax-hero .orbit-stage {
   transform: translateZ(40px);
 }
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* Above bg, behind content */
+  mix-blend-mode: screen;
+  transition: opacity 0.5s ease;
+}
